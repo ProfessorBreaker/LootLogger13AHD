@@ -40,6 +40,17 @@ class ItemStore {
         // Insert item in array at new location
         allItems.insert(movedItem, at: toIndex)
     }
+    
+    func saveChanges() -> Bool {
+        do {
+                let encoder = PropertyListEncoder()
+                let data = try encoder.encode(allItems)
+            } catch let encodingError {
+                print("Error encoding allItems: \(encodingError)")
+            }
+
+        return false
+    }
 //    init() {
 //        for _ in 0..<5 {
 //            createItem()
